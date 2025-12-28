@@ -149,10 +149,14 @@ function createProductCard(product) {
             <p class="product-description">${product.description}</p>
             <div class="product-footer">
                 <span class="product-price">$${product.price.toFixed(2)}</span>
-                <button class="buy-btn" onclick="handleBuy(${product.id})">Add to Cart</button>
+                <button class="buy-btn" data-product-id="${product.id}">Add to Cart</button>
             </div>
         </div>
     `;
+
+    // Add event listener to buy button
+    const buyBtn = card.querySelector('.buy-btn');
+    buyBtn.addEventListener('click', () => handleBuy(product.id));
 
     return card;
 }
@@ -182,8 +186,36 @@ function setupFilterButtons() {
 function handleBuy(productId) {
     const product = products.find(p => p.id === productId);
     if (product) {
-        alert(`Added "${product.title}" to cart!\n\nPrice: $${product.price.toFixed(2)}\n\nThank you for your interest!`);
+        showToast(`Added "${product.title}" to cart! ($${product.price.toFixed(2)})`);
     }
+}
+
+// Show toast notification
+function showToast(message) {
+    // Remove existing toast if any
+    const existingToast = document.querySelector('.toast');
+    if (existingToast) {
+        existingToast.remove();
+    }
+
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    // Trigger animation
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
 }
 
 // Initialize when DOM is loaded

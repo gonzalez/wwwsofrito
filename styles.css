@@ -177,6 +177,27 @@ main {
     background: #764ba2;
 }
 
+.toast {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+    z-index: 1000;
+    transition: bottom 0.3s ease;
+    max-width: 90%;
+    text-align: center;
+}
+
+.toast.show {
+    bottom: 30px;
+}
+
 footer {
     background: #333;
     color: white;
