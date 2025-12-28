@@ -3,10 +3,10 @@ const products = [
     {
         id: 1,
         type: 'books',
-        title: 'The Art of Programming',
-        author: 'Donald Knuth',
-        description: 'A comprehensive guide to computer programming fundamentals.',
-        price: 49.99,
+        title: 'Latin X Heroes',
+        author: 'Community Stories',
+        description: 'Celebrating the achievements and stories of Latinx leaders and changemakers.',
+        price: 24.99,
         icon: '📚'
     },
     {

@@ -5,10 +5,12 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.5;
+    color: #1a1a1a;
+    background-color: #faf8f5;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .container {
@@ -18,11 +20,37 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #d32f2f 0%, #f57c00 50%, #ff6f00 100%);
     color: white;
     padding: 2rem 0;
-    text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-text {
+    text-align: center;
+}
+
+.tagline {
+    font-size: 0.875rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.9;
 }
 
 header h1 {
@@ -41,44 +69,54 @@ main {
 
 .intro {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
 }
 
 .intro h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: #667eea;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+}
+
+.intro p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #666;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .filters {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
     flex-wrap: wrap;
 }
 
 .filter-btn {
-    padding: 0.75rem 1.5rem;
-    border: 2px solid #667eea;
+    padding: 0.625rem 1.25rem;
+    border: 1px solid #e0e0e0;
     background: white;
-    color: #667eea;
+    color: #666;
     cursor: pointer;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .filter-btn:hover {
-    background: #667eea;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    border-color: #f57c00;
+    color: #f57c00;
 }
 
 .filter-btn.active {
-    background: #667eea;
+    background: #f57c00;
     color: white;
 }
 
@@ -107,7 +145,7 @@ main {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ff6f00 0%, #f57c00 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,7 +160,7 @@ main {
 .product-category {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background: #667eea;
+    background: #d32f2f;
     color: white;
     border-radius: 15px;
     font-size: 0.75rem;
@@ -159,12 +197,12 @@ main {
 .product-price {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #667eea;
+    color: #d32f2f;
 }
 
 .buy-btn {
     padding: 0.5rem 1.25rem;
-    background: #667eea;
+    background: #ff6f00;
     color: white;
     border: none;
     border-radius: 20px;
@@ -174,7 +212,7 @@ main {
 }
 
 .buy-btn:hover {
-    background: #764ba2;
+    background: #d32f2f;
 }
 
 .toast {
@@ -207,6 +245,15 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .logo {
+        height: 60px;
+    }
+
     header h1 {
         font-size: 2rem;
     }
