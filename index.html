@@ -1,46 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sofrito.org - Books & Posters</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sofrito | Latin X Heroes</title>
+
+  <style>
+    :root {
+      --green: #10281d;
+      --deep: #090d0b;
+      --cream: #f1dfbd;
+      --orange: #d95524;
+      --gold: #d79a2b;
+      --red: #9b2d20;
+      --blue: #173f55;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--deep);
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      padding: 24px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(9, 13, 11, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--orange);
+      font-style: italic;
+    }
+
+    nav a {
+      color: var(--cream);
+      margin-left: 28px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #111;
+      padding: 14px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-top: 28px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 140px 7% 80px;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(217,85,36,.45), transparent 35%),
+        linear-gradient(120deg, #09100c, #132b1f 60%, #080b09);
+    }
+
+    .eyebrow {
+      color: #8cc15a;
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(54px, 8vw, 104px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      max-width: 520px;
+      font-size: 20px;
+      margin-top: 28px;
+    }
+
+    .book {
+      min-height: 580px;
+      border-radius: 8px;
+      background:
+        linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35)),
+        url("cover.png");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      position: relative;
+    }
+
+    .book::after {
+      content: "LATIN X HEROES";
+      position: absolute;
+      inset: auto 30px 40px 30px;
+      font-size: 58px;
+      line-height: .95;
+      font-weight: 900;
+      color: var(--cream);
+      text-shadow: 0 5px 20px rgba(0,0,0,.8);
+    }
+
+    section {
+      padding: 80px 7%;
+    }
+
+    .paper {
+      background: var(--cream);
+      color: #161616;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .intro h2 {
+      font-size: 52px;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .intro h2 span {
+      color: var(--red);
+    }
+
+    .note {
+      background: #ead2a7;
+      padding: 35px;
+      transform: rotate(-2deg);
+      font-size: 28px;
+      font-weight: 800;
+      font-style: italic;
+      box-shadow: 0 15px 35px rgba(0,0,0,.2);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 50px;
+    }
+
+    .card {
+      border-left: 1px solid rgba(0,0,0,.2);
+      padding-left: 24px;
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      color: var(--red);
+      text-transform: uppercase;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .quote {
+      background:
+        radial-gradient(circle at left, rgba(217,85,36,.28), transparent 30%),
+        linear-gradient(120deg, #0b1711, #152c20);
+      text-align: center;
+      padding: 90px 7%;
+    }
+
+    .quote h2 {
+      font-size: clamp(34px, 5vw, 68px);
+      font-style: italic;
+      line-height: 1.1;
+      color: var(--cream);
+    }
+
+    .quote p {
+      color: var(--orange);
+      font-weight: 900;
+      margin-top: 24px;
+      letter-spacing: 2px;
+    }
+
+    footer {
+      background: var(--orange);
+      color: #111;
+      padding: 34px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      padding: 14px 18px;
+      min-width: 260px;
+      border: none;
+      background: #111;
+      color: white;
+    }
+
+    button {
+      border: none;
+      padding: 14px 22px;
+      background: #050505;
+      color: var(--cream);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        position: static;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      .hero,
+      .intro {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      form {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      input,
+      button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <img src="sofrito.png" alt="Sofrito.org Logo" class="logo">
-                <div class="header-text">
-                    <p class="tagline">Books & Posters Collection</p>
-                </div>
-            </div>
+
+  <header>
+    <div class="logo">Sofrito.</div>
+    <nav>
+      <a href="#">HOME</a>
+      <a href="#book">ABOUT THE BOOK</a>
+      <a href="#preview">PREVIEW</a>
+      <a href="#signup">PRE-ORDER</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">A BOOK. A CULTURE. A MOVEMENT.</div>
+        <h1>Our Roots.<br>Our Stories.<br><span>Our Legacy.</span></h1>
+        <p>
+          Latin X Heroes is a tribute to the people who raised us,
+          inspired us, and showed us what's possible.
+        </p>
+        <p>
+          Real stories. Real heroes. Our cultura — in full color.
+        </p>
+        <a class="btn" href="#signup">PRE-ORDER THE BOOK</a>
+      </div>
+
+      <div class="book" aria-label="Latin X Heroes book cover"></div>
+    </section>
+
+    <section class="paper" id="book">
+      <div class="intro">
+        <div>
+          <h2>More than a book — <span>it's our history.</span></h2>
+          <p>
+            Inspired by cultural icons, family stories, childhood memories,
+            and the layered influences that shape Latino identity.
+          </p>
         </div>
-    </header>
 
-    <main class="container">
-        <section class="intro">
-            <h2>Welcome to Our Collection</h2>
-            <p>Discover our curated selection of books and art posters</p>
-        </section>
-
-        <section class="filters">
-            <button class="filter-btn active" data-filter="all">All Items</button>
-            <button class="filter-btn" data-filter="books">Books</button>
-            <button class="filter-btn" data-filter="posters">Posters</button>
-        </section>
-
-        <section class="products" id="products-grid">
-            <!-- Products will be dynamically inserted here -->
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Sofrito.org. All rights reserved.</p>
+        <div class="note">
+          Inspired by the people, places, and moments that shaped who we became.
         </div>
-    </footer>
+      </div>
 
-    <script src="app.js"></script>
+      <div class="cards" id="preview">
+        <div class="card">
+          <div class="icon">❤️</div>
+          <h3>Rooted in Culture</h3>
+          <p>Traditions, language, food, music, and memories passed down.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🌿</div>
+          <h3>Seasoned with Love</h3>
+          <p>The everyday lessons and values that made us who we are.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">✊🏽</div>
+          <h3>Built on Resilience</h3>
+          <p>Stories of struggle, strength, pride, and possibility.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">★</div>
+          <h3>Inspiring Generations</h3>
+          <p>For our niños, familias, dreamers, and future storytellers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote">
+      <h2>“De dónde vienes nunca limita a dónde puedes llegar.”</h2>
+      <p>THIS IS FOR US. THIS IS FOR THEM. THIS IS OUR LEGACY.</p>
+    </section>
+  </main>
+
+  <footer id="signup">
+    <div>
+      <strong>BE PART OF THE MOVEMENT.</strong>
+      <p>Get updates, previews, and pre-order information.</p>
+    </div>
+
+    <form>
+      <input type="email" placeholder="Enter your email" />
+      <button type="submit">GET UPDATES</button>
+    </form>
+  </footer>
+
 </body>
 </html>

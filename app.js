@@ -182,11 +182,80 @@ function setupFilterButtons() {
     });
 }
 
+// PayPal payment handler
+let paypalButtonsRendered = false;
+
 // Handle buy button click
 function handleBuy(productId) {
     const product = products.find(p => p.id === productId);
     if (product) {
-        showToast(`Added "${product.title}" to cart! ($${product.price.toFixed(2)})`);
+        showPayPalCheckout(product);
+    }
+}
+
+// Show PayPal checkout modal
+function showPayPalCheckout(product) {
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.className = 'paypal-modal';
+    modal.innerHTML = `
+        <div class="paypal-modal-content">
+            <div class="paypal-modal-header">
+                <h3>Complete Purchase</h3>
+                <button class="close-btn" onclick="closePayPalModal()">×</button>
+            </div>
+            <div class="paypal-modal-body">
+                <div class="product-summary">
+                    <h4>${product.title}</h4>
+                    <p>by ${product.author}</p>
+                    <p class="price">$${product.price.toFixed(2)}</p>
+                </div>
+                <div id="paypal-button-${product.id}"></div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Render PayPal buttons
+    renderPayPalButtons(product.id, product.price);
+    
+    // Show modal with animation
+    setTimeout(() => modal.classList.add('show'), 10);
+}
+
+// Render PayPal buttons
+function renderPayPalButtons(productId, price) {
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: price.toFixed(2)
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                showToast('Payment successful! Thank you for your purchase.');
+                closePayPalModal();
+                console.log('Transaction completed by ' + details.payer.name.given_name);
+            });
+        },
+        onError: function(err) {
+            console.error('PayPal error:', err);
+            showToast('Payment failed. Please try again.');
+        }
+    }).render(`#paypal-button-${productId}`);
+}
+
+// Close PayPal modal
+function closePayPalModal() {
+    const modal = document.querySelector('.paypal-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
     }
 }
 
