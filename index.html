@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sofrito | Latin X Heroes</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -23,7 +26,7 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Inter", sans-serif;
       background: var(--deep);
       color: var(--cream);
       line-height: 1.6;
@@ -34,19 +37,31 @@
       top: 0;
       width: 100%;
       z-index: 10;
-      padding: 24px 7%;
+      padding: 22px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(9, 13, 11, 0.85);
+      background: rgba(9, 13, 11, 0.9);
       backdrop-filter: blur(8px);
     }
 
+    /* UPDATED LOGO */
     .logo {
-      font-size: 38px;
-      font-weight: 900;
+      font-family: "Oswald", sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       color: var(--orange);
-      font-style: italic;
+    }
+
+    .logo::after {
+      content: "";
+      display: block;
+      width: 40%;
+      height: 3px;
+      background: var(--orange);
+      margin-top: 6px;
     }
 
     nav a {
@@ -54,7 +69,7 @@
       margin-left: 28px;
       text-decoration: none;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 1px;
     }
 
@@ -65,7 +80,7 @@
       padding: 14px 24px;
       border-radius: 4px;
       text-decoration: none;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 1px;
       margin-top: 28px;
     }
@@ -78,22 +93,22 @@
       gap: 60px;
       align-items: center;
       background:
-        radial-gradient(circle at 70% 30%, rgba(217,85,36,.45), transparent 35%),
+        radial-gradient(circle at 70% 30%, rgba(217,85,36,.4), transparent 40%),
         linear-gradient(120deg, #09100c, #132b1f 60%, #080b09);
     }
 
     .eyebrow {
       color: #8cc15a;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 3px;
       margin-bottom: 20px;
+      font-size: 12px;
     }
 
     h1 {
-      font-size: clamp(54px, 8vw, 104px);
+      font-size: clamp(54px, 8vw, 96px);
       line-height: 0.95;
       text-transform: uppercase;
-      letter-spacing: 2px;
     }
 
     h1 span {
@@ -102,31 +117,19 @@
 
     .hero p {
       max-width: 520px;
-      font-size: 20px;
-      margin-top: 28px;
+      font-size: 18px;
+      margin-top: 24px;
     }
 
     .book {
-      min-height: 580px;
-      border-radius: 8px;
+      min-height: 560px;
+      border-radius: 6px;
       background:
-        linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35)),
-        url("cover.png");
+        linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.4)),
+        url("cover.jpg");
       background-size: cover;
       background-position: center;
-      box-shadow: 0 30px 80px rgba(0,0,0,.55);
-      position: relative;
-    }
-
-    .book::after {
-      content: "LATIN X HEROES";
-      position: absolute;
-      inset: auto 30px 40px 30px;
-      font-size: 58px;
-      line-height: .95;
-      font-weight: 900;
-      color: var(--cream);
-      text-shadow: 0 5px 20px rgba(0,0,0,.8);
+      box-shadow: 0 30px 70px rgba(0,0,0,.6);
     }
 
     section {
@@ -146,10 +149,10 @@
     }
 
     .intro h2 {
-      font-size: 52px;
-      line-height: 1;
+      font-size: 48px;
       text-transform: uppercase;
       color: var(--blue);
+      line-height: 1.1;
     }
 
     .intro h2 span {
@@ -158,68 +161,67 @@
 
     .note {
       background: #ead2a7;
-      padding: 35px;
+      padding: 30px;
       transform: rotate(-2deg);
-      font-size: 28px;
-      font-weight: 800;
+      font-size: 24px;
+      font-weight: 700;
       font-style: italic;
-      box-shadow: 0 15px 35px rgba(0,0,0,.2);
+      box-shadow: 0 12px 30px rgba(0,0,0,.2);
     }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
+      gap: 30px;
       margin-top: 50px;
     }
 
     .card {
       border-left: 1px solid rgba(0,0,0,.2);
-      padding-left: 24px;
+      padding-left: 20px;
     }
 
     .icon {
-      font-size: 42px;
-      margin-bottom: 12px;
+      font-size: 36px;
+      margin-bottom: 10px;
     }
 
     .card h3 {
       color: var(--red);
       text-transform: uppercase;
-      font-size: 18px;
-      margin-bottom: 8px;
+      font-size: 16px;
+      margin-bottom: 6px;
     }
 
     .quote {
       background:
-        radial-gradient(circle at left, rgba(217,85,36,.28), transparent 30%),
+        radial-gradient(circle at left, rgba(217,85,36,.25), transparent 40%),
         linear-gradient(120deg, #0b1711, #152c20);
       text-align: center;
       padding: 90px 7%;
     }
 
     .quote h2 {
-      font-size: clamp(34px, 5vw, 68px);
+      font-size: clamp(32px, 5vw, 60px);
       font-style: italic;
-      line-height: 1.1;
-      color: var(--cream);
+      line-height: 1.2;
     }
 
     .quote p {
       color: var(--orange);
-      font-weight: 900;
-      margin-top: 24px;
+      font-weight: 800;
+      margin-top: 20px;
       letter-spacing: 2px;
     }
 
     footer {
       background: var(--orange);
       color: #111;
-      padding: 34px 7%;
+      padding: 30px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 30px;
+      gap: 20px;
     }
 
     form {
@@ -228,8 +230,7 @@
     }
 
     input {
-      padding: 14px 18px;
-      min-width: 260px;
+      padding: 12px 16px;
       border: none;
       background: #111;
       color: white;
@@ -237,26 +238,15 @@
 
     button {
       border: none;
-      padding: 14px 22px;
-      background: #050505;
+      padding: 12px 18px;
+      background: #000;
       color: var(--cream);
-      font-weight: 900;
+      font-weight: 700;
       cursor: pointer;
     }
 
     @media (max-width: 900px) {
-      header {
-        position: static;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      nav a {
-        margin: 0 10px;
-      }
-
-      .hero,
-      .intro {
+      .hero, .intro {
         grid-template-columns: 1fr;
       }
 
@@ -264,13 +254,14 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      footer {
+      header {
+        position: static;
         flex-direction: column;
-        align-items: flex-start;
+        gap: 10px;
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 600px) {
       .cards {
         grid-template-columns: 1fr;
       }
@@ -280,103 +271,101 @@
         width: 100%;
       }
 
-      input,
-      button {
+      input, button {
         width: 100%;
       }
     }
+
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">Sofrito.</div>
-    <nav>
-      <a href="#">HOME</a>
-      <a href="#book">ABOUT THE BOOK</a>
-      <a href="#preview">PREVIEW</a>
-      <a href="#signup">PRE-ORDER</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">SOFRITO</div>
+  <nav>
+    <a href="#">HOME</a>
+    <a href="#">ABOUT</a>
+    <a href="#">PREVIEW</a>
+    <a href="#">PRE-ORDER</a>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero">
-      <div>
-        <div class="eyebrow">A BOOK. A CULTURE. A MOVEMENT.</div>
-        <h1>Our Roots.<br>Our Stories.<br><span>Our Legacy.</span></h1>
-        <p>
-          Latin X Heroes is a tribute to the people who raised us,
-          inspired us, and showed us what's possible.
-        </p>
-        <p>
-          Real stories. Real heroes. Our cultura — in full color.
-        </p>
-        <a class="btn" href="#signup">PRE-ORDER THE BOOK</a>
-      </div>
+<section class="hero">
+  <div>
+    <div class="eyebrow">A BOOK. A CULTURE. A MOVEMENT.</div>
+    <h1>Our Roots.<br>Our Stories.<br><span>Our Legacy.</span></h1>
+    <p>
+      Latin X Heroes is a tribute to the people who raised us,
+      inspired us, and shaped who we became.
+    </p>
+    <p>
+      Real stories. Real heroes. Our cultura — layered, lived, and remembered.
+    </p>
+    <a class="btn" href="#">PRE-ORDER THE BOOK</a>
+  </div>
 
-      <div class="book" aria-label="Latin X Heroes book cover"></div>
-    </section>
+  <div class="book"></div>
+</section>
 
-    <section class="paper" id="book">
-      <div class="intro">
-        <div>
-          <h2>More than a book — <span>it's our history.</span></h2>
-          <p>
-            Inspired by cultural icons, family stories, childhood memories,
-            and the layered influences that shape Latino identity.
-          </p>
-        </div>
-
-        <div class="note">
-          Inspired by the people, places, and moments that shaped who we became.
-        </div>
-      </div>
-
-      <div class="cards" id="preview">
-        <div class="card">
-          <div class="icon">❤️</div>
-          <h3>Rooted in Culture</h3>
-          <p>Traditions, language, food, music, and memories passed down.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🌿</div>
-          <h3>Seasoned with Love</h3>
-          <p>The everyday lessons and values that made us who we are.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">✊🏽</div>
-          <h3>Built on Resilience</h3>
-          <p>Stories of struggle, strength, pride, and possibility.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">★</div>
-          <h3>Inspiring Generations</h3>
-          <p>For our niños, familias, dreamers, and future storytellers.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="quote">
-      <h2>“De dónde vienes nunca limita a dónde puedes llegar.”</h2>
-      <p>THIS IS FOR US. THIS IS FOR THEM. THIS IS OUR LEGACY.</p>
-    </section>
-  </main>
-
-  <footer id="signup">
+<section class="paper">
+  <div class="intro">
     <div>
-      <strong>BE PART OF THE MOVEMENT.</strong>
-      <p>Get updates, previews, and pre-order information.</p>
+      <h2>More than a book — <span>it's our history.</span></h2>
+      <p>
+        A reflection of the cultural layers, everyday influences,
+        and personal moments that quietly shape identity.
+      </p>
     </div>
 
-    <form>
-      <input type="email" placeholder="Enter your email" />
-      <button type="submit">GET UPDATES</button>
-    </form>
-  </footer>
+    <div class="note">
+      Inspired by the people, places, and moments that shaped who we became.
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">❤️</div>
+      <h3>Rooted in Culture</h3>
+      <p>Traditions, language, and heritage passed down.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌿</div>
+      <h3>Seasoned with Love</h3>
+      <p>The small moments that build identity.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">✊🏽</div>
+      <h3>Built on Resilience</h3>
+      <p>Stories of strength, pride, and growth.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">★</div>
+      <h3>Inspiring Generations</h3>
+      <p>For those who come next.</p>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <h2>“De dónde vienes nunca limita a dónde puedes llegar.”</h2>
+  <p>THIS IS OUR LEGACY.</p>
+</section>
+
+<footer>
+  <div>
+    <strong>BE PART OF THE MOVEMENT.</strong>
+    <p>Get updates and early access.</p>
+  </div>
+
+  <form>
+    <input type="email" placeholder="Enter your email">
+    <button>GET UPDATES</button>
+  </form>
+</footer>
 
 </body>
 </html>
